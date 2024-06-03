@@ -1,0 +1,15 @@
+package br.com.ewerton.configuration;
+
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.stereotype.Component;
+
+@Component
+public class OrderCreatedListener {
+
+	@RabbitListener(queues = "orders.v1.order-created")
+	public void onOrderCreated(Message message) {
+		System.out.println("Id recebido " + message.toString());
+		
+	}
+}

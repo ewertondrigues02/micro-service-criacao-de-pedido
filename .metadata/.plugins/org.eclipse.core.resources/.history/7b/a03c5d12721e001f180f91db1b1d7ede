@@ -1,0 +1,26 @@
+package br.com.ewerton.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import br.com.ewerton.model.Order;
+import br.com.ewerton.repository.OrderRepository;
+
+@Service
+public class OrderService {
+
+	@Autowired
+	private OrderRepository orderRepository;
+
+	public List<Order> allOrder() {
+		return orderRepository.findAll();
+	}
+
+	public Order createOrder(Order order) {
+		return orderRepository.save(order);
+
+	}
+
+}

@@ -1,0 +1,15 @@
+package br.com.ewerton.configuration;
+
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.stereotype.Component;
+
+@Component
+public class OrderCreatedListener {
+
+	@RabbitListener(queues = "${spring.rabbitmq.template.default-receive-queue}")
+	public void onOrderCreated(Message message) {
+		
+		
+	}
+}

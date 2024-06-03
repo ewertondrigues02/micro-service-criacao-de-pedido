@@ -1,0 +1,13 @@
+spring.application.name=order-service
+server.port=8088
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.datasource.url=jdbc:postgresql://localhost:5432/order_service?useTimezone=true&serverTimezone=UTC
+spring.datasource.username=postgres
+spring.datasource.password=ew241481
+spring.jpa.hibernate.ddl-auto=update
+
+# RabbitMQ
+spring.rabbitmq.host=localhost
+spring.rabbitmq.port=5672
+spring.rabbitmq.username=rabbitmq
+spring.rabbitmq.password=rabbitmq

@@ -1,0 +1,22 @@
+spring.application.name=order-service
+server.port=8088
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.datasource.url=jdbc:postgresql://localhost:5432/order_service?useTimezone=true&serverTimezone=UTC
+spring.datasource.username=postgres
+spring.datasource.password=ew241481
+spring.jpa.hibernate.ddl-auto=update
+
+
+# RabbitMQ
+spring.rabbitmq.host=shark.rmq.cloudamqp.com
+spring.rabbitmq.port=5672
+spring.rabbitmq.username=zksbwhhp
+spring.rabbitmq.password=oHw4r-ctQDehadVwpFfmGNM4aydURR_1
+spring.rabbitmq.virtual-host=zksbwhhp
+spring.rabbitmq.ssl.enabled=true
+spring.rabbitmq.addresses=amqps://zksbwhhp:oHw4r-ctQDehadVwpFfmGNM4aydURR_1@[shark.rmq.cloudamqp.com]:5672/zksbwhhp
+
+# Management plugin
+management.endpoints.web.exposure.include=*
+management.endpoint.health.show-details=always
+

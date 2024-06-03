@@ -1,0 +1,5 @@
+package br.com.ewerton.repository;
+
+public interface OrderRepository {
+
+}
