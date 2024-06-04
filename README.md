@@ -12,10 +12,10 @@
  * **GitHub**: Utilizado para armazenar os repositórios do projeto, facilitando o versionamento e colaboração.
 
 ### Padrões e Conceitos Usados:
- * Padrão **MVC** para separar as camadas das aplicações.
- * Padrão **REST** para sistemas distribuídos, que utiliza o protocolo HTTP para comunicação, com operações baseadas em recursos identificados por URLs e métodos HTTP (GET, POST, PUT, DELETE), promovendo uma interface uniforme e orientada a recursos.
- * Conceito **Clean Code** para escrever código de forma clara, legível e organizada, facilitando sua compreensão, manutenção e colaboração entre desenvolvedores.
- * Principio **SOLID** foi usado o **S** - Single Responsibility Principle (Princípio da Responsabilidade Única): Uma classe deve ter apenas uma única razão para mudar.
+ * Padrão **MVC**: para separar as camadas das aplicações.
+ * Padrão **REST**: para sistemas distribuídos, que utiliza o protocolo HTTP para comunicação, com operações baseadas em recursos identificados por URLs e métodos HTTP (GET, POST, PUT, DELETE), promovendo uma interface uniforme e orientada a recursos.
+ * Conceito **Clean Code**: para escrever código de forma clara, legível e organizada, facilitando sua compreensão, manutenção e colaboração entre desenvolvedores.
+ * Principio **SOLID** foi usado: **S** - Single Responsibility Principle (Princípio da Responsabilidade Única): Uma classe deve ter apenas uma única razão para mudar.
 **O** - Open/Closed Principle (Princípio do Aberto/Fechado): Entidades de software devem ser abertas para extensão, mas fechadas para modificação.
 **L** - Liskov Substitution Principle (Princípio da Substituição de Liskov): Subtipos devem ser substituíveis por seus tipos base.
 
