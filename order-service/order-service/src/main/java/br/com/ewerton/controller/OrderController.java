@@ -11,6 +11,9 @@ import br.com.ewerton.dto.OrderCreatedEvent;
 import br.com.ewerton.model.Order;
 import br.com.ewerton.service.OrderService;
 
+/**
+ * Controlador REST para operações relacionadas a pedidos.
+ */
 @RestController
 @RequestMapping(value = "/orders")
 public class OrderController {
@@ -21,11 +24,17 @@ public class OrderController {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
+    /**
+     * Cria um novo pedido e publica um evento no RabbitMQ.
+     *
+     * @param order Objeto do pedido recebido no corpo da requisição.
+     * @return Pedido criado.
+     */
     @PostMapping
     public Order createOrders(@RequestBody Order order) {
         orderService.createOrder(order);
         OrderCreatedEvent event = new OrderCreatedEvent(order.getId(), order.getUserId(), order.getProduct(), order.getPrice());
-        rabbitTemplate.convertAndSend("orders.v1.order-created", "", event); 
+        rabbitTemplate.convertAndSend("orders.v1.order-created", "", event);
         return order;
     }
 }

@@ -13,39 +13,84 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Classe de configuração do RabbitMQ.
+ * Configura a fila, a exchange, os bindings e o template de mensagens.
+ */
 @Configuration
 public class RabbitMQConfig {
 
+    /**
+     * Cria uma fila para notificações de pedidos criados.
+     *
+     * @return Instância da fila configurada.
+     */
     @Bean
     Queue queueNotification() {
         return new Queue("orders.v1.order-created.send.notification");
     }
 
+    /**
+     * Cria uma FanoutExchange para a comunicação de eventos de pedidos criados.
+     *
+     * @return Instância da exchange configurada.
+     */
     @Bean
     FanoutExchange fanoutExchange() {
         return new FanoutExchange("orders.v1.order-created");
     }
 
+    /**
+     * Configura o RabbitAdmin, que é responsável por gerenciar a configuração do RabbitMQ.
+     *
+     * @param connectionFactory Fábrica de conexões com o RabbitMQ.
+     * @return Instância do RabbitAdmin.
+     */
     @Bean
     RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory) {
         return new RabbitAdmin(connectionFactory);
     }
 
+    /**
+     * Inicializa o RabbitAdmin ao iniciar a aplicação.
+     *
+     * @param rabbitAdmin Instância do RabbitAdmin.
+     * @return ApplicationListener que executa a inicialização do RabbitAdmin.
+     */
     @Bean
     ApplicationListener<ApplicationReadyEvent> applicationReadyEventApplicationListener(RabbitAdmin rabbitAdmin) {
         return event -> rabbitAdmin.initialize();
     }
 
+    /**
+     * Cria um binding entre a fila de notificações e a FanoutExchange.
+     *
+     * @param queueNotification Fila configurada.
+     * @param fanoutExchange Exchange configurada.
+     * @return Instância do Binding configurado.
+     */
     @Bean
     Binding binding(Queue queueNotification, FanoutExchange fanoutExchange) {
         return BindingBuilder.bind(queueNotification).to(fanoutExchange);
     }
 
+    /**
+     * Configura um conversor de mensagens para JSON usando Jackson.
+     *
+     * @return Instância do Jackson2JsonMessageConverter.
+     */
     @Bean
     Jackson2JsonMessageConverter messageConverter() {
         return new Jackson2JsonMessageConverter();
     }
 
+    /**
+     * Configura o RabbitTemplate com um conversor de mensagens JSON.
+     *
+     * @param connectionFactory Fábrica de conexões com o RabbitMQ.
+     * @param messageConverter Conversor de mensagens para JSON.
+     * @return Instância do RabbitTemplate configurada.
+     */
     @Bean
     RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory, Jackson2JsonMessageConverter messageConverter) {
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
@@ -53,4 +98,3 @@ public class RabbitMQConfig {
         return rabbitTemplate;
     }
 }
-

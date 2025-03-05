@@ -8,18 +8,31 @@ import org.springframework.stereotype.Service;
 import br.com.ewerton.model.Order;
 import br.com.ewerton.repository.OrderRepository;
 
+/**
+ * Serviço para gerenciar operações relacionadas a pedidos (Order).
+ */
 @Service
 public class OrderService {
 
-	@Autowired
-	private OrderRepository orderRepository;
+    @Autowired
+    private OrderRepository orderRepository;
 
-	public List<Order> allOrder() {
-		return orderRepository.findAll();
-	}
+    /**
+     * Retorna todos os pedidos cadastrados.
+     *
+     * @return Lista de pedidos.
+     */
+    public List<Order> allOrder() {
+        return orderRepository.findAll();
+    }
 
-	public Order createOrder(Order order) {
-		return orderRepository.save(order);
-	}
-
+    /**
+     * Cria e salva um novo pedido no banco de dados.
+     *
+     * @param order Objeto do pedido a ser salvo.
+     * @return Pedido salvo.
+     */
+    public Order createOrder(Order order) {
+        return orderRepository.save(order);
+    }
 }

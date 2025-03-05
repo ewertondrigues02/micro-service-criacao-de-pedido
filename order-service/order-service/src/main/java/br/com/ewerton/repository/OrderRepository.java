@@ -7,7 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import br.com.ewerton.model.Order;
 
+/**
+ * Repositório para a entidade Order, permitindo operações CRUD.
+ */
 @Repository
-public interface OrderRepository extends JpaRepository<Order, UUID>{
-
+public interface OrderRepository extends JpaRepository<Order, UUID> {
 }
